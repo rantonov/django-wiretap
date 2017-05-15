@@ -1,7 +1,7 @@
 from django.contrib import admin
 from wiretap.admin import MessageAdmin
 
-from testproject.testapp.models import UserMessage
+from .models import UserMessage
 
 class UserMessageAdmin(MessageAdmin):
     list_display = ('request', 'response', 'remote_addr', 'duration', 'user',)

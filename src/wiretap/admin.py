@@ -28,9 +28,9 @@ class MessageAdmin(ReadOnlyModelAdmin):
     response.admin_order_field = 'res_status_code'
 
     def get_urls(self):
-        from django.conf.urls import patterns, url
+        from django.conf.urls import url
 
-        return patterns('',
+        return [
             url(
                 r'^(?P<pk>\d+)/req-body/$',
                 self.admin_site.admin_view(self.body_view),
@@ -47,7 +47,7 @@ class MessageAdmin(ReadOnlyModelAdmin):
                     'get_header_name': 'get_res_header'
                 }
             )
-        ) + super(MessageAdmin, self).get_urls()
+        ] + super(MessageAdmin, self).get_urls()
 
     def body_view(self, request, pk, field_name, get_header_name):
         message = get_object_or_404(Message, id=pk)
