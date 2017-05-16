@@ -30,8 +30,8 @@ class WiretapMiddleware(object):
         # `FileField`.
         #
         # This isn't particularly performant, so we'll disable ourselves if
-        # Django isn't in debug mode.
-        if not getattr(settings, 'DEBUG', False):
+        # Django isn't in debug mode unless FORCE_EIRETAP is set to True in settings
+        if (not getattr(settings, 'DEBUG', False)) and (not getattr(settings, 'FORCE_WIRETAP', False)):
             raise MiddlewareNotUsed()
 
     def should_tap(self, request):

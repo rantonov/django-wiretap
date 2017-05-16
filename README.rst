@@ -37,7 +37,7 @@ Usage:
   - Add ``'wiretap.middleware.WiretapMiddleware'`` to your
     ``MIDDLEWARE_CLASSES``.
 
-- Create models with ``./manage.py syncdb``
+- Create models with ``./manage.py syncdb`` or ``./manage.py migrate wiretap``
 
 - Go to Django admin, add a new ``Tap``.
 
@@ -51,4 +51,5 @@ Usage:
 
 HTTP request/responses will now be saved to the `Message` admin page.
 
-Note that Wiretap will be disabled if Django is not in debug mode.
+Note that Wiretap will be disabled if Django is not in debug mode unless you have ``FORCE_WIRETAP=True`` in
+your project settings file.
